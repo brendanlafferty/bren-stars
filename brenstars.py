@@ -1,7 +1,8 @@
 from typing import List
+from math import gcd
+
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
-from math import gcd
 
 
 def find_m_from_n(n: int) -> int:
