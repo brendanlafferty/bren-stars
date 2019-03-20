@@ -1,5 +1,9 @@
 from typing import List
 import matplotlib.pyplot as plt
+import matplotlib.ticker as plticker
+
+
+_ticker_loc = plticker.MultipleLocator(1)
 
 
 def construct_square(n: int) -> List[tuple]:
@@ -36,7 +40,10 @@ def reorder_square_into_star(square_coords: List[tuple], co_factor: int, ind: in
     """
     reorders the coordinates of the nodes in a square to trace the path of the star given the coordinates, the co-factor
     The function is recursive.  The function doesn't create a true brenstar path unless the co-factor is the smallest
-    co-prime factor of len(square_coords) that is greater than len(square_coords)/4
+    co-prime factor of len(square_coords) that is greater than len(square_coords)/4.  The recursion ends when the
+    coordinates (0, 0) are reached.  this mean that if the co-factor is not co-prime then not all of the coordinates
+    passed will be returned in the list
+
     :param list(tuple) square_coords:
     :param int co_factor:
     :param int ind: recursive param
@@ -53,15 +60,39 @@ def reorder_square_into_star(square_coords: List[tuple], co_factor: int, ind: in
     return star_coords
 
 
-def plot_coordinates(coordinates) -> None:
+def plot_coordinates(coordinates: List[tuple], axes: plt.Axes=None) -> plt.Axes:
     """
     Creates a line plot of a list of coordinates
     :param List[tuple] coordinates: list of coordinate tuples
+    :param plt.Figure axes: optional can provide axes
     :return: None
     """
+    if not axes:
+        axes = plt.subplot(111)
     xs, ys = zip(*coordinates)
-    plt.plot(xs, ys, '.-')
+    plt.plot(xs, ys, '-', color='gold', marker='o', markerfacecolor='b')
+    set_ticks_to_unit_spacing(axes)
+    remove_border()
+    return axes
 
+
+def set_ticks_to_unit_spacing(ax: plt.Axes) -> None:
+    """
+    Sets the major tick spacing to units of 1
+    :param plt.Axes ax: Axes object
+    :return: None
+    """
+    ax.xaxis.set_major_locator(_ticker_loc)
+    ax.yaxis.set_major_locator(_ticker_loc)
+
+
+def remove_border() -> None:
+    """
+    removes the border of the active plot
+    :return: None
+    """
+    for spine in plt.gca().spines.values():
+        spine.set_visible(False)
 
 
 if __name__ == "__main__":
