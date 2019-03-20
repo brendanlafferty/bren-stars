@@ -1,9 +1,21 @@
 from typing import List
 import matplotlib.pyplot as plt
 import matplotlib.ticker as plticker
+from math import gcd
 
 
-_ticker_loc = plticker.MultipleLocator(1)
+def find_m_from_n(n: int) -> int:
+    """
+    returns the smallest value that is co-prime with 4n and greater than n
+    will either be n+1 or n+2
+    :param int n:
+    :return:
+    """
+    m = n + 1
+    n4 = n * 4
+    while not coprime(n4, m):
+        m += 1
+    return m
 
 
 def construct_square(n: int) -> List[tuple]:
@@ -76,14 +88,16 @@ def plot_coordinates(coordinates: List[tuple], axes: plt.Axes=None) -> plt.Axes:
     return axes
 
 
-def set_ticks_to_unit_spacing(ax: plt.Axes) -> None:
+def set_ticks_to_unit_spacing(ax: plt.Axes, spacing_num: int = 1) -> None:
     """
-    Sets the major tick spacing to units of 1
+    Sets the major tick spacing to units of the spacing number
+    :param int spacing_num: spacing number
     :param plt.Axes ax: Axes object
     :return: None
     """
-    ax.xaxis.set_major_locator(_ticker_loc)
-    ax.yaxis.set_major_locator(_ticker_loc)
+    ticker_loc = plticker.MultipleLocator(spacing_num)
+    ax.xaxis.set_major_locator(ticker_loc)
+    ax.yaxis.set_major_locator(ticker_loc)
 
 
 def remove_border() -> None:
@@ -95,13 +109,24 @@ def remove_border() -> None:
         spine.set_visible(False)
 
 
-if __name__ == "__main__":
+def coprime(a: int, b: int) -> bool:
+    """
+    tests to see if the two integers are co-prime
+    :param int a:
+    :param int b:
+    :return: bool stating whether the 2 integers are co-prime
+    """
+    return gcd(a, b) == 1
 
-    n = 3
-    m = 5
-    sq_coords = construct_square(n)
-    print(sq_coords)
-    st_coords = reorder_square_into_star(sq_coords, m)
-    print(st_coords)
-    plot_coordinates(st_coords)
+
+if __name__ == "__main__":
+    fig = plt.figure(10, figsize=(3.35, 9))
+    for n in range(1, 11):
+        ax = plt.subplot(5, 2, n)
+        ax.set_title(f'brenstar of order {n}', fontsize=8)
+        m = find_m_from_n(n)
+        sq_coords = construct_square(n)
+        st_coords = reorder_square_into_star(sq_coords, m)
+        plot_coordinates(st_coords, ax)
+    fig.tight_layout()
     plt.show()
