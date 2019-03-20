@@ -8,7 +8,7 @@ def construct_square(n: int) -> List[tuple]:
     connected elsewhere
 
     :param int n: order of brenstar to be created
-    :return:
+    :return: list of the coordinate tuples of the square with side of length n
 
     """
     coordinates = [(0, 0)]
@@ -40,7 +40,7 @@ def reorder_square_into_star(square_coords: List[tuple], co_factor: int, ind: in
     :param list(tuple) square_coords:
     :param int co_factor:
     :param int ind: recursive param
-    :return:
+    :return: a list of coordinate tuples that start and end at (0,0)
     """
 
     if ind is None:
@@ -53,11 +53,24 @@ def reorder_square_into_star(square_coords: List[tuple], co_factor: int, ind: in
     return star_coords
 
 
+def plot_coordinates(coordinates) -> None:
+    """
+    Creates a line plot of a list of coordinates
+    :param List[tuple] coordinates: list of coordinate tuples
+    :return: None
+    """
+    xs, ys = zip(*coordinates)
+    plt.plot(xs, ys, '.-')
+
+
+
 if __name__ == "__main__":
 
-    n = 2
-    m = 3
+    n = 3
+    m = 5
     sq_coords = construct_square(n)
     print(sq_coords)
     st_coords = reorder_square_into_star(sq_coords, m)
     print(st_coords)
+    plot_coordinates(st_coords)
+    plt.show()
