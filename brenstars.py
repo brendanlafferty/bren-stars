@@ -124,7 +124,7 @@ if __name__ == "__main__":
     fig = plt.figure(10, figsize=(9, 3.9), dpi=300)
     for n in range(1, 11):
         ax = plt.subplot(2, 5, n)
-        ax.set_title(f'brenstar of order {n}', fontsize=8)
+        ax.set_title(f'bren-star of order {n}', fontsize=8)
         m = find_m_from_n(n)
         sq_coords = construct_square(n)
         st_coords = reorder_square_into_star(sq_coords, m)
