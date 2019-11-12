@@ -8,16 +8,14 @@ import matplotlib.ticker as plticker
 def find_m_from_n(n: int) -> int:
     """
     returns the smallest value that is co-prime with 4n and greater than n
-    will either be n+1 or n+2
+    will either be n+1 or n+2 specifically the first odd number greater than n
     :param int n:
     :return:
     """
-    m = n + 1
-    n4 = n * 4
-    while not coprime(n4, m):
-        m += 1
-    return m
-
+    if coprime(n*4, n+1)
+        return n+1
+    else
+        return n+2
 
 def construct_square(n: int) -> List[tuple]:
     """
