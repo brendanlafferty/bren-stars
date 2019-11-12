@@ -42,5 +42,19 @@ created by the star.  Since then I have identified 2 classes of points:
    - Intersection points - points where multiple lines intersect
    - Other points on the star
  + Points in the star:  These are points that do not lie on any of the lines and include:
-   - Interior - the points that are contained in the central most contiguous area
-   - Peripheral - the poins inside the star but not inside the central most shape
+   - Central - the points that are contained in the central most contiguous area
+   - Peripheral - the points inside the star but not inside the central most shape
+
+| _n_   | _Central Interior Points_ | _Peripheral Interior Points_* | _Points of Intersection_* |
+|:-----:|:-------------------------:|:-----------------------------:|:-------------------------:|
+| 1     |  0                        |  0                            |  0                        |
+| 2     |  1                        |  0                            |  0                        |
+| 3     |  0                        |  0                            |  4                        |
+| 4     |  5                        |  4                            |  0                        |
+| 5     |  4                        |  0                            | 12                        |
+| 6     | 13                        | 12                            |  0                        |
+| 7     | 12                        |  0                            | 24                        |
+| 8     | 21                        | 16                            |  8                        |
+| 9     | 24                        | 12                            | 28                        |
+| 10    | 37                        | 44                            |  0                        |
+| ...   | ...                       | ...                           | ...                       |
