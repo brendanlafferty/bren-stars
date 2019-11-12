@@ -93,6 +93,23 @@ def plot_coordinates(coordinates: List[tuple], axes: plt.Axes=None) -> plt.Axes:
     return axes
 
 
+def add_point_markers(n: int, axes: plt.Axes=None) -> plt.Axes:
+    """
+    adds points with integer coordinates to the plot to mimic the dot matrix paper that brenstars were first created on
+    :param int n: Order of the brenstar
+    :param plt.Axes axes: optional can provide axes
+    :return:
+    """
+    if not axes:
+        axes = plt.subplot(111)
+    coordinates = ((x,y) for x in range(n+1) for y in range(n+1))
+    xs, ys = zip(*coordinates)
+    # TODO: create a function to determine whether the points are centrally interior, perephirally interior,
+    #  intersection points on the star or vertices.  It would be called here to map the points to a color.
+    plt.scatter(xs, ys, s=1, c='r', zorder=3)
+    return axes
+
+
 def set_ticks_to_unit_spacing(ax: plt.Axes, spacing_num: int = 1) -> None:
     """
     Sets the major tick spacing to units of the spacing number
@@ -122,6 +139,7 @@ if __name__ == "__main__":
         m = find_m_from_n(n)
         sq_coords = construct_square(n)
         st_coords = reorder_square_into_star(sq_coords, m)
+        add_point_markers(n, ax)
         plot_coordinates(st_coords, ax)
     fig.tight_layout()
     plt.savefig('brenstars1-10.png', transparent=True)
