@@ -12,9 +12,10 @@ def find_m_from_n(n: int) -> int:
     :param int n:
     :return:
     """
-    if coprime(n*4, n+1)
+    odd = (n + 1) % 2
+    if odd:
         return n+1
-    else
+    else:
         return n+2
 
 def construct_square(n: int) -> List[tuple]:
@@ -111,16 +112,6 @@ def remove_border() -> None:
     """
     for spine in plt.gca().spines.values():
         spine.set_visible(False)
-
-
-def coprime(a: int, b: int) -> bool:
-    """
-    tests to see if the two integers are co-prime
-    :param int a:
-    :param int b:
-    :return: bool stating whether the 2 integers are co-prime
-    """
-    return gcd(a, b) == 1
 
 
 if __name__ == "__main__":
