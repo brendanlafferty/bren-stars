@@ -21,7 +21,7 @@ def find_m_from_n(n: int) -> int:
 
 def construct_square(n: int) -> List[tuple]:
     """
-    returns a list of the coordinate pairs for the location of 4n nodes aranged in a square.  The nodes will be
+    returns a list of the coordinate pairs for the location of 4n nodes arranged in a square.  The nodes will be
     connected elsewhere
 
     :param int n: order of brenstar to be created
@@ -34,15 +34,20 @@ def construct_square(n: int) -> List[tuple]:
     # value points when moving down in axis values
     neg_movement_values = range(n-1, -1, -1)
 
+    # create lists of length n for each side of the square
     y_axis_coordinates = list(zip([0] * n, pos_movement_values))
     x_at_max_y_coordinates = list(zip(pos_movement_values, [pos_movement_values[-1]] * n))
     y_at_max_x_coordinates = list(zip([pos_movement_values[-1]]*n, neg_movement_values))
     x_axis_coordinates = list(zip(neg_movement_values, [0] * n))
-    del x_axis_coordinates[-1]  # remove(0, 0)]
 
+    # remove (0, 0) from the final side of the square
+    del x_axis_coordinates[-1]
+
+    # put all four sides together
     coordinates.extend(y_axis_coordinates)
     coordinates.extend(x_at_max_y_coordinates)
     coordinates.extend(y_at_max_x_coordinates)
+    # one exception for the final side is for the n=1 case.  In that case x_axis_coordinates will be an empty list
     if x_axis_coordinates:
         coordinates.extend(x_axis_coordinates)
 
