@@ -45,16 +45,18 @@ created by the star.  Since then I have identified 2 classes of points:
    - Central - the points that are contained in the central most contiguous area
    - Peripheral - the points inside the star but not inside the central most shape
 
-| _n_   | _Central Interior Points_ | _Peripheral Interior Points_* | _Points of Intersection_* |
-|:-----:|:-------------------------:|:-----------------------------:|:-------------------------:|
-| 1     |  0                        |  0                            |  0                        |
-| 2     |  1                        |  0                            |  0                        |
-| 3     |  0                        |  0                            |  4                        |
-| 4     |  5                        |  4                            |  0                        |
-| 5     |  4                        |  0                            | 12                        |
-| 6     | 13                        | 12                            |  0                        |
-| 7     | 12                        |  0                            | 24                        |
-| 8     | 21                        | 16                            |  8                        |
-| 9     | 24                        | 12                            | 28                        |
-| 10    | 37                        | 44                            |  0                        |
-| ...   | ...                       | ...                           | ...                       |
+| _n_   | _Vertices [4n]_ | _Central Interior Points_ | _Peripheral Interior Points_* | _Points of Intersection_* | _Total Points [(n+1)^2]_ |
+|:-----:|:---------------:|:-------------------------:|:-----------------------------:|:-------------------------:|:--------------:|
+| 1     |  4              |  0                        |  0                            |  0                        |   4
+| 2     |  8              |  1                        |  0                            |  0                        |   9
+| 3     | 12              |  0                        |  0                            |  4                        |  16
+| 4     | 16              |  5                        |  4                            |  0                        |  25
+| 5     | 20              |  4                        |  0                            | 12                        |  36
+| 6     | 24              | 13                        | 12                            |  0                        |  49
+| 7     | 28              | 12                        |  0                            | 24                        |  64
+| 8     | 32              | 21                        | 16                            |  8                        |  81
+| 9     | 36              | 24                        | 12                            | 28                        | 100
+| 10    | 40              | 37                        | 44                            |  0                        | 121
+| ...   | ...             | ...                       | ...                           | ...                       | ...
+
+\* Peripheral interior and intersection totals are not necessarily accurate at this point.
