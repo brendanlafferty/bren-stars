@@ -40,7 +40,8 @@ created by the star.  Since then I have identified 2 classes of points:
  + Points on the star: these are any points on one of the lines they include
    - Vertex points - points lying on the perimeter of the square that are used in the construction of the star
    - Intersection points - points where multiple lines intersect
-   - Other points on the star
+   - Other points on the star - I hypothesize that due to reflectional and rotational symmetries all points with integer coordinates that 
+   lie on the star will be points of intersection. 
  + Points in the star:  These are points that do not lie on any of the lines and include:
    - Central - the points that are contained in the central most contiguous area
    - Peripheral - the points inside the star but not inside the central most shape
@@ -59,4 +60,7 @@ created by the star.  Since then I have identified 2 classes of points:
 | 10    | 40              | 37                        | 44                            |  0                        | 121
 | ...   | ...             | ...                       | ...                           | ...                       | ...
 
-\* Peripheral interior and intersection totals are not necessarily accurate at this point.
+\* Peripheral interior and intersection totals are not necessarily accurate yet howe ever the sum of vetices, central points, peripheral points, and intersection points. Do total the projected total points so that is something in favor of them being accurate.
+
+<img style="float: right;" src="brenstars_notebook.png">
+ + As mentioned before I was originally intrigued by the central points. Here is the first characterization from my notebook. drawing stars 2 through 7 results in a interesting patter where the odd stars have 1 few points than the even star just smaller than them.
