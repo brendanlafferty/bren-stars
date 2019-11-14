@@ -62,5 +62,7 @@ created by the star.  Since then I have identified 2 classes of points:
 
 \* Peripheral interior and intersection totals are not necessarily accurate yet howe ever the sum of vetices, central points, peripheral points, and intersection points. Do total the projected total points so that is something in favor of them being accurate.
 
+| | |
+|:----------------:|:---------:|
 | + As mentioned before I was originally intrigued by the central points. Here is the first characterization from my notebook. drawing stars 2 through 7 results in a interesting patter where the odd stars have 1 few points than the even star just smaller than them.| <img style="float: right;" src="brenstars_notebook.png" width=100> |
  
